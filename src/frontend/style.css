@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --bg-primary: #0F172A;
+    --bg-card: #1E293B;
+
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+
+    --button-primary: #15294c;
+    --button-hover: #5b7299;
+}
+
+body{
+    background-color: var(--bg-primary);
+    height: 100vh;
+    width: 100vw;
+}
+
+/* class="rounded-3xl w-1/2 h-10 bg-[#1E293B] text-[#94A3B8] placeholder:text-[#64748B] placeholder:text-center border border-[#475569] focus:outline-none focus:ring-2 focus:ring-[#15294c] focus:text-center" */
+

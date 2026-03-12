@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explainify.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section
+      class="flex flex-col justify-center items-center gap-3 min-h-screen"
+    >
+      <h1 class="text-5xl font-bold text-slate-100 text-center">
+        Explainify.ai
+      </h1>
+      <p class="text-[#94A3B8] mb-5">An Ai to make things simple!</p>
+
+      <!-- Search -->
+      <div class="flex flex-row h-full w-full justify-center gap-3">
+        <input
+          type="text"
+          placeholder="Enter Your Topic Here"
+          class="p-5 rounded-3xl w-1/2 h-10 bg-[#1E293B] text-[#94A3B8] placeholder:text-[#64748B] placeholder:text-center border border-[#475569] focus:outline-none focus:ring-2 focus:ring-[#15294c] focus:text-center"
+        />
+        <button class="text-[#64748B] hover:text-white">Search</button>
+      </div>
+
+      <!-- Feature Buttons -->
+      <div class="flex flex-row gap-3 w-1/2 justify-center">
+        <button
+          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
+        >
+          Visual
+        </button>
+        <button
+          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
+        >
+          Graphs
+        </button>
+        <button
+          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
+        >
+          Flowchart
+        </button>
+        <button
+          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
+        >
+          History
+        </button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
