@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/alieeshaathecoder/Explainify/issues"
   },
-  "homepage": "https://github.com/alieeshaathecoder/Explainify#readme"
+  "homepage": "https://github.com/alieeshaathecoder/Explainify#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.0"
+  }
 }
