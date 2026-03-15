@@ -1,31 +1,53 @@
 import asyncHandler from "../utils/asyncHandler.js";
-import {Query} from "../models/query.models.js"
+import { Query } from "../models/query.models.js";
 import apiError from "../utils/apiError.js";
 import apiResponse from "../utils/apiResponse.js";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
+
+const groq = new Groq({
+  apiKey: "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",
+});
 
 const explainQuery = asyncHandler(async (req, res) => {
-  const topic = req.body.topic;
+  const { topic } = req.body;
 
   if (!topic) {
     throw new apiError(400, "Topic is required");
   }
 
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+  const completion = await groq.chat.completions.create({
+    messages: [
+      {
+        role: "user",
+        content: `You are a teacher explaining things to a 5-year-old child.
+
+Explain the topic: "${topic}"
+
+Rules:
+- Use very simple words.
+- Use short sentences.
+- Make it easy and fun to understand.
+- Avoid technical or complex terms.
+
+Return the response in this format:
+
+Explanation:
+Explain the topic in very simple language like teaching a small child.
+
+Example:
+Give a real-life example that a child can imagine.
+
+Summary:
+Give a very short summary in one or two sentences.
+
+Do NOT include titles like "Simple Explanation", "Example", or "Summary". 
+Just write the paragraphs.`,
+      },
+    ],
+    model: "llama-3.3-70b-versatile",
   });
 
-  const prompt = `
-  Explain the topic "${topic}" in simple language.
-  Include:
-  - simple explanation
-  - one real-life example
-  - short summary
-  `;
-
-  const result = await model.generateContent(prompt);
-  const explanation = result.response.text();
+  const explanation = completion.choices[0].message.content;
 
   const query = await Query.create({
     topic,
@@ -34,7 +56,7 @@ const explainQuery = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(new apiResponse(201, { query }, "Query explained successfully"));
+    .json(new apiResponse(201, query, "Topic explained successfully"));
 });
 
 export { explainQuery };

@@ -18,12 +18,12 @@
 
       <!-- Search -->
       <div class="flex flex-row h-full w-full justify-center gap-3">
-        <input
+        <input id="input"
           type="text"
           placeholder="Enter Your Topic Here"
           class="p-5 rounded-3xl w-1/2 h-10 bg-[#1E293B] text-[#94A3B8] placeholder:text-[#64748B] placeholder:text-center border border-[#475569] focus:outline-none focus:ring-2 focus:ring-[#15294c] focus:text-center"
         />
-        <button class="text-[#64748B] hover:text-white">Search</button>
+        <button id="search" class="text-[#64748B] hover:text-white ">Search</button>
       </div>
 
       <!-- Feature Buttons -->
@@ -49,6 +49,9 @@
          🕒 History
         </button>
       </div>
+
+      <!-- Result -->
+       <div id="result" class="text-[#F1F5F9] m-4 text-xl"></div>
     </section>
 
     <script src="script.js"></script>

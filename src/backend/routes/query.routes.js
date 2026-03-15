@@ -1,4 +1,4 @@
-import Router from 'express';
+import {Router} from 'express'
 import { explainQuery } from '../controllers/query.controllers.js';
 
 const router = Router();
