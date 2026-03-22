@@ -1,7 +1,12 @@
-import express from 'express';
+import express from "express";
 import cors from "cors";
 
-const app = express()
+
+const app = express();
+app.use((req, res, next) => {
+  console.log("👉 Incoming:", req.method, req.url);
+  next();
+});
 
 app.use(
   cors({
@@ -15,10 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // IMPORTING ROUTES
 import queryRoutes from "./routes/query.routes.js";
+import flowchartRoutes from "./routes/flowchart.routes.js";
 
+// USING ROUTES
 app.use("/api/v1/topic", queryRoutes);
-app.get("/", (req, res) => {
-  res.send("Server is working")
-});
+app.use("/api/v1/input", flowchartRoutes);
 
 export default app;

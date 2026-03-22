@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explainify.ai</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -18,40 +19,43 @@
 
       <!-- Search -->
       <div class="flex flex-row h-full w-full justify-center gap-3">
-        <input id="input"
+        <input
+          id="input"
           type="text"
           placeholder="Enter Your Topic Here"
           class="p-5 rounded-3xl w-1/2 h-10 bg-[#1E293B] text-[#94A3B8] placeholder:text-[#64748B] placeholder:text-center border border-[#475569] focus:outline-none focus:ring-2 focus:ring-[#15294c] focus:text-center"
         />
-        <button id="search" class="text-[#64748B] hover:text-white ">Search</button>
+        <button id="search" class="text-[#64748B] hover:text-white">
+          Search
+        </button>
       </div>
 
       <!-- Feature Buttons -->
-      <div class="flex flex-row gap-3 w-1/3 justify-center">
-        <button
+      <div class="flex flex-row gap-3 w-1/2 justify-center">
+        <button id="flowchart" onclick="generateFlowchart()"
           class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
         >
-         🧠 Visual
+          Flowchart
         </button>
         <button
           class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
         >
-         📊 Graphs
+          Time Complexity
         </button>
         <button
           class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
         >
-         🔀 Flowchart
+          Space Complexity
         </button>
         <button
           class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
         >
-         🕒 History
+          Dry Run
         </button>
       </div>
 
       <!-- Result -->
-       <div id="result" class="text-[#F1F5F9] m-4 text-xl"></div>
+      <div id="result" class="text-[#F1F5F9] m-4 text-xl"></div>
     </section>
 
     <script src="script.js"></script>
