@@ -22,13 +22,17 @@ const generateFlowchart = asyncHandler(async (req, res) => {
         content: `Convert the following input into a Mermaid flowchart.
 
 Rules:
-- Use "graph TD"
-- Keep node text short (2 to 4 words)
-- Avoid special characters like (), {}, :, ;
-- Use decision nodes (diamonds) where needed
-- Do NOT include explanations
-- Do NOT include backticks
+- Use graph TD
+- Each node must have SHORT text (max 3 words)
+- DO NOT use symbols like < > = { } ( )
+- DO NOT include programming code
+- Use simple words like "Start", "Check", "Process"
+- Use Yes/No for decisions
+- DO NOT repeat nodes or connections
 - ONLY return Mermaid code
+- DO NOT use backticks
+- Do NOT use numbers or symbols as edge labels
+- Only use "Yes" or "No" for conditions
 
 Input:
 ${input}`,
@@ -40,9 +44,11 @@ ${input}`,
   let chart = completion.choices[0]?.message?.content || "";
   console.log(chart)
 
-  chart = chart
-    .replace(/```mermaid/g, "")
+ chart = chart
+      .replace(/```mermaid/g, "")
     .replace(/```/g, "")
+    .replace(/\r/g, "")
+    .replace(/\n{2,}/g, "\n")
     .trim();
 
   res.status(200).json(

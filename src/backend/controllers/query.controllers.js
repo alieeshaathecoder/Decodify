@@ -9,10 +9,10 @@ const groq = new Groq({
 });
 
 const explainQuery = asyncHandler(async (req, res) => {
-  const { topic } = req.body;
+  const { input } = req.body;
 
-  if (!topic) {
-    throw new apiError(400, "Topic is required");
+  if (!input) {
+    throw new apiError(400, "Input is required");
   }
 
   const completion = await groq.chat.completions.create({
@@ -24,7 +24,7 @@ const explainQuery = asyncHandler(async (req, res) => {
 Analyze the following code and explain it for beginners.
 
 Code:
-"${topic}"
+"${input}"
 
 Rules for the response:
 
@@ -69,7 +69,7 @@ Explain everything in very simple language suitable for beginners learning progr
   const explanation = completion.choices[0].message.content;
 
   const query = await Query.create({
-    topic,
+    input,
     explanation,
   });
 

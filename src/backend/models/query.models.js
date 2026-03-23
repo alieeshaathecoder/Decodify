@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 
 const querySchema = new Schema({
-    topic: {
+    input: {
         type: String,
         required: true,
         trim: true
