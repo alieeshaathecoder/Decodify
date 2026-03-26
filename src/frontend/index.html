@@ -10,21 +10,18 @@
   </head>
   <body>
     <section
-      class="flex flex-col justify-center items-center gap-3 min-h-screen"
+      class="flex flex-col items-center gap-3 min-h-screen"
     >
-      <h1 class="text-6xl font-bold text-slate-100 text-center">
-        Explainify.ai
+      <h1 class="text-6xl font-bold text-slate-100 text-center mt-5">
+        Decodify.ai
       </h1>
-      <p class="text-[#94A3B8] mb-5">An Ai to make things simple!</p>
+      <p class="text-[#94A3B8] mb-5 text-center">Turning Code into Clarity!</p>
 
       <!-- Search -->
       <div class="flex flex-row h-full w-full justify-center gap-3">
-        <input
-          id="input"
-          type="text"
-          placeholder="Enter Your Topic Here"
-          class="p-5 rounded-3xl w-1/2 h-10 bg-[#1E293B] text-[#94A3B8] placeholder:text-[#64748B] placeholder:text-center border border-[#475569] focus:outline-none focus:ring-2 focus:ring-[#15294c] focus:text-center"
-        />
+        <div  id="editor" class="p-8 rounded-3xl w-[80vw] h-[35vh] bg-[#1E293B] text-[#94A3B8] border border-[#475569]" >
+        </div>
+
         <button id="search" class="text-[#64748B] hover:text-white">
           Search
         </button>
@@ -55,9 +52,13 @@
       </div>
 
       <!-- Result -->
-      <div id="result" class="text-[#F1F5F9] m-4 text-xl"></div>
-    </section>
+     <div class="w-[80%] mt-8 text-[#E2E8F0] w-[80%] ">
+  <p class="text-xl text-[#64748B] mb-2">Output</p>
+  <div id="result" class="leading-relaxed text-base w-[80vw]">
+  </div>
+</div>
 
+     <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

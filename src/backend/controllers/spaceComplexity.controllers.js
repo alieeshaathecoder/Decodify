@@ -8,10 +8,10 @@ const groq = new Groq({
   apiKey: "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",
 });
 
-const generateSpaceComplexity = asyncHandler(async (req,res) => {
+const generateSpaceComplexity = asyncHandler(async (req, res) => {
   const { input } = req.body;
 
-  if(!input) {
+  if (!input) {
     throw new apiError(400, "Input is required");
   }
 
@@ -61,11 +61,15 @@ ${input}`,
     complexity: completion.choices[0].message.content,
   });
 
-  console.log(spaceComplexity);
-
-
-  res.status(201).json(new apiResponse(201, spaceComplexity, "Space complexity generated successfully"));
+  res
+    .status(201)
+    .json(
+      new apiResponse(
+        201,
+        spaceComplexity,
+        "Space complexity generated successfully",
+      ),
+    );
 });
-
 
 export { generateSpaceComplexity };
