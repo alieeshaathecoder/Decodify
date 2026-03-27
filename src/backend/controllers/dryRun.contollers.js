@@ -21,8 +21,8 @@ const createDryRun = asyncHandler(async (req, res) => {
   const loopContent = input.slice(smallBracesStart + 1, smallBracesEnd);
 
   const trimedPart = loopContent.split(";").map((part) => part.trim());
- 
-  const [left, right] = trimedPart[0].split("=")
+
+  const [left, right] = trimedPart[0].split("=");
 
   const variable = left.trim();
   const start = Number(right.trim());
@@ -39,8 +39,8 @@ const createDryRun = asyncHandler(async (req, res) => {
 
   let increment, decrement;
   const changeInVar = trimedPart[2].trim();
-  if(changeInVar.includes("++")) increment = +1;
-  else if(changeInVar.includes("--")) decrement = -1;
+  if (changeInVar.includes("++")) increment = +1;
+  else if (changeInVar.includes("--")) decrement = -1;
 
   const curlyBracesStart = input.indexOf("{");
   const curlyBracesEnd = input.lastIndexOf("}");
@@ -48,24 +48,34 @@ const createDryRun = asyncHandler(async (req, res) => {
   const loopBody = input.slice(curlyBracesStart + 1, curlyBracesEnd).trim();
   const loopLines = loopBody.split("\n");
 
-  const parsedBody = {
-     variable,
-     start,
-     operator,
-     end,
-     increment,
-     decrement,
-     loopLines
+  const parsedData = {
+    variable,
+    start,
+    operator,
+    end,
+    increment,
+    decrement,
+    loopLines,
+  };
+
+  let steps = [];
+  for (let i = parsedData.start; i < parsedData.end; i++) {
+    steps.push(`i = ${i}`);
+    parsedData.loopLines.forEach((line) => {
+      if (line.includes("console.log(i)")) {
+        const startIndex = line.indexOf("(");
+        const endIndex = line.lastIndexOf(")");
+        const contentInsideLog = line.slice(startIndex + 1, endIndex).trim();
+        if (contentInsideLog === parsedData.variable) {
+          steps.push(`Print ${i}`);
+        }
+      }
+    });
   }
 
-  res.status(200).json(new apiResponse(
-    200,
-    parsedBody,
-    "Dry run created successfully",
-  )
-  )
+  res
+    .status(200)
+    .json(new apiResponse(200, steps, "Dry run created successfully"));
 });
 
-export {
-    createDryRun,
-}
+export { createDryRun };

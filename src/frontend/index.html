@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explainify.ai</title>
+    <title>Decodify.ai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="style.css" />
@@ -44,18 +44,37 @@
         >
           Space Complexity
         </button>
-        <button
+        <button id="dryRun"
           class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
         >
           Dry Run
         </button>
       </div>
 
-      <!-- Result -->
-     <div class="w-[80%] mt-8 text-[#E2E8F0] w-[80%] ">
-  <p class="text-xl text-[#64748B] mb-2">Output</p>
-  <div id="result" class="leading-relaxed text-base w-[80vw]">
+     <div class="w-[80vw] mt-6">
+
+  <!-- Output Label -->
+  <h2 class="text-[#64748B] text-sm mb-2">Output</h2>
+
+  <!-- Output + Button -->
+  <div id="resultContainer" class="flex items-start gap-4">
+
+    <!-- Output Box -->
+    <div id="result"
+      class="flex-1 p-4 rounded-xl bg-[#1E293B] text-[#94A3B8]
+      max-h-[200px] overflow-y-auto">
+    </div>
+
+    <!-- Button -->
+    <button id="nextStep"
+      class="px-4 py-2 rounded-full 
+      bg-[#1E293B] text-[#94A3B8] 
+      hover:bg-blue-600 hover:text-white transition">
+      Next Step
+    </button>
+
   </div>
+
 </div>
 
      <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
