@@ -59,7 +59,7 @@ searchBtn.addEventListener("click", async () => {
 
   const inputVal = window.editor.getValue().trim();
 
-  const response = await fetch("http://localhost:8000/api/v1/topic/explain", {
+  const response = await fetch("https://decodify-1.onrender.com/api/v1/topic/explain", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -98,7 +98,7 @@ timeComplexityBtn.addEventListener("click", async () => {
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
-    "http://localhost:8000/api/v1/generate/timeComplexity",
+    "https://decodify-1.onrender.com/api/v1/generate/timeComplexity",
     {
       method: "POST",
       headers: {
@@ -123,7 +123,7 @@ spaceComplexityBtn.addEventListener("click", async () => {
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
-    "http://localhost:8000/api/v1/generate/spaceComplexity",
+    "https://decodify-1.onrender.com/api/v1/generate/spaceComplexity",
     {
       method: "POST",
       headers: {
@@ -147,7 +147,7 @@ spaceComplexityBtn.addEventListener("click", async () => {
 async function generateFlowchart() {
   const input = window.editor.getValue().trim().toString();
 
-  const res = await fetch("http://localhost:8000/api/v1/input/flowchart", {
+  const res = await fetch("https://decodify-1.onrender.com/api/v1/input/flowchart", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -202,7 +202,7 @@ dryRunBtn.addEventListener("click", async () => {
   console.log("Dry Run button clicked");
   const inputVal = window.editor.getValue().trim();
 
-  const response = await fetch("http://localhost:8000/api/v1/create/dryRun", {
+  const response = await fetch("https://decodify-1.onrender.com/api/v1/create/dryRun", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
