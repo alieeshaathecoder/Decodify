@@ -67,7 +67,7 @@ const generateFlowchart = asyncHandler(async (req, res) => {
 flowchart TD
 Start([Start]) --> A[${parsedData.variable} = ${parsedData.start}]
 A --> B{${parsedData.variable} ${parsedData.operator} ${parsedData.end}?}
-B -->|Yes| C[${formatLine(parsedData.loopLines[0])}]
+B -->|Yes| C[${parsedData.loopLines[0].trim()}]
 C --> D[${parsedData.variable}${parsedData.increment === 1 ? "++" : "--"}]
 D --> B
 B -->|No| E([End])
