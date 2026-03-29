@@ -264,7 +264,7 @@ function addStep() {
   const stepEl = document.createElement("div");
 
   stepEl.className =
-    "text-[#94A3B8] text-sm md:text-base leading-tight";
+    "text-[#94A3B8] text-sm md:text-lg leading-tight";
 
   stepEl.textContent = `Step ${currentStep + 1}: ${steps[currentStep]}`;
 
