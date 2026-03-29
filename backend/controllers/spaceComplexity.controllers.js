@@ -24,16 +24,16 @@ const generateSpaceComplexity = asyncHandler(async (req, res) => {
 Analyze the given code and return a very short answer.
 
 Output format:
-- First line: Space Complexity in Big-O notation
-- Next 1 to 2 lines: Short explanation of how space is used
+- Space Complexity in Big-O notation
+- Short explanation of how space is used
 
 Rules:
-- Keep total output under 3 lines
+- Keep total output under 5-6 lines
 - No headings
 - No bullet points
 - No comments
 - No extra text
-- Mention auxiliary space only
+- Mention auxiliary space
 - Include recursion stack if present
 
 Code:
