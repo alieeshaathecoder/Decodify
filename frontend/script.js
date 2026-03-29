@@ -194,7 +194,7 @@ function renderChart(code) {
   result.innerHTML = ""; // clear first
 
   try {
-    result.innerHTML = `<div class="mermaid">${code}</div>`;
+    result.innerHTML = `<div class="mermaid overflow-y-auto">${code}</div>`;
     mermaid.init(undefined, document.querySelectorAll(".mermaid"));
   } catch (err) {
     console.error(err);
@@ -225,11 +225,12 @@ function highlightLine(lineNumber) {
 
 dryRunBtn.addEventListener("click", async () => {
   nextStepBtn.classList.remove("hidden");
+
   if (!window.editor) {
     alert("Editor not ready yet");
     return;
   }
-  console.log("Dry Run button clicked");
+
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
@@ -239,39 +240,50 @@ dryRunBtn.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        input: inputVal,
-      }),
-    },
+      body: JSON.stringify({ input: inputVal }),
+    }
   );
 
   const data = await response.json();
 
   steps = data.data;
   currentStep = 0;
-  result.innerHTML = `
-   <p id="typingText" class="text-[#94A3B8] leading-relaxed whitespace-pre-line">
-    Step 1: ${steps[0]}
-  </p>
-`;
+
+  // ✅ clear old output properly
+  result.innerHTML = "";
+
+  // ✅ add first step cleanly
+  addStep();
 
   highlightLine(2);
-
-  // nextStepBtn.classList.remove("hidden");
 });
-function handleBtnClick() {
-  currentStep++;
-  if (currentStep < steps.length) {
-    result.innerHTML += `
-  <p id="typingText" class="text-[#94A3B8] leading-tight text-sm md:text-lg mb-1">
-    Step ${currentStep + 1}: ${steps[currentStep]}
-  </p>
-`;
 
+function addStep() {
+  if (currentStep >= steps.length) return;
+
+  const stepEl = document.createElement("div");
+
+  stepEl.className =
+    "text-[#94A3B8] text-sm md:text-base leading-tight";
+
+  stepEl.textContent = `Step ${currentStep + 1}: ${steps[currentStep]}`;
+
+  result.appendChild(stepEl);
+
+  // ✅ auto scroll (important)
+  result.scrollTop = result.scrollHeight;
+
+  currentStep++;
+}
+
+function handleBtnClick() {
+  addStep();
+
+  if (currentStep < steps.length) {
     if (steps[currentStep].includes("=")) {
-      highlightLine(2); // loop line
+      highlightLine(2);
     } else {
-      highlightLine(3); // console.log line
+      highlightLine(3);
     }
   }
 }
