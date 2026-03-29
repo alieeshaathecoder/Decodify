@@ -281,9 +281,9 @@ function handleBtnClick() {
 
   if (currentStep < steps.length) {
     if (steps[currentStep].includes("=")) {
-      highlightLine(2);
-    } else {
       highlightLine(3);
+    } else {
+      highlightLine(2);
     }
   }
 }
