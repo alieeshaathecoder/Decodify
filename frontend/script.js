@@ -50,6 +50,7 @@ require(["vs/editor/editor.main"], function () {
 });
 
 searchBtn.addEventListener("click", async () => {
+  nextStepBtn.classList.add("hidden");
   if (!window.editor) {
     alert("Editor not ready yet");
     return;
@@ -94,6 +95,7 @@ searchBtn.addEventListener("click", async () => {
 });
 
 timeComplexityBtn.addEventListener("click", async () => {
+  nextStepBtn.classList.add("hidden");
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
@@ -131,6 +133,7 @@ timeComplexityBtn.addEventListener("click", async () => {
 });
 
 spaceComplexityBtn.addEventListener("click", async () => {
+  nextStepBtn.classList.add("hidden");
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
@@ -200,6 +203,7 @@ function renderChart(code) {
 }
 
 flowchartBtn.addEventListener("click", () => {
+  nextStepBtn.classList.add("hidden");
   generateFlowchart();
 });
 
