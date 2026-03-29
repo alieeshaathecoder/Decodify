@@ -19,14 +19,34 @@ const explainQuery = asyncHandler(async (req, res) => {
     messages: [
       {
         role: "user",
-        content: `You are an expert programming teacher.
+        content: `You are a programming teacher.
 
-Analyze the following code:
+Analyze the given code and respond in a very short and structured format.
+
+Output format:
+
+Explanation:
+- Max 4 points only
+- Each point must be 1 short sentence
+
+Steps:
+- Max 6 steps only
+- Each step must be very short (3–6 words)
+
+Flow:
+- One single line only
+- Format: Start → ... → End
+
+Rules:
+- Keep everything concise
+- Do NOT write paragraphs
+- Do NOT repeat information
+- Do NOT include code
+- Do NOT include extra text
+- Do not include any comments or headings
+
+Code:
 "${input}"
-
-Explain the code in simple points for beginners. Describe what each part does. Then show the program flow in simple steps like a flowchart (Start → … → End). Keep explanations short, clear, and point-wise. Do not include extra lines, long paragraphs, headings, execution steps, mistakes, complexity, or filler text.
-
-Don't include any comments in the code
 `,
       },
     ],

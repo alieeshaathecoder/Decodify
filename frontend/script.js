@@ -59,23 +59,22 @@ searchBtn.addEventListener("click", async () => {
 
   const inputVal = window.editor.getValue().trim();
 
-  const response = await fetch("https://decodify-1.onrender.com/api/v1/topic/explain", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await fetch(
+    "https://decodify-1.onrender.com/api/v1/topic/explain",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: inputVal,
+      }),
     },
-    body: JSON.stringify({
-      input: inputVal,
-    }),
-  });
+  );
 
   const data = await response.json();
 
-  result.innerHTML = `
-      <div class="bg-[#1E293B] p-6 rounded-xl max-w-[80vw]">
-        <p id="typingText" class="text-[#94A3B8] leading-relaxed whitespace-pre-line"></p>
-      </div>
-    `;
+  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
 
   const textElement = document.getElementById("typingText");
   const fullText = data.data.explanation;
@@ -87,7 +86,7 @@ searchBtn.addEventListener("click", async () => {
     if (index < fullText.length) {
       textElement.innerHTML += fullText.charAt(index);
       index++;
-      setTimeout(typeEffect, 50); // speed (lower = faster)
+      setTimeout(typeEffect, 20); // speed (lower = faster)
     }
   }
 
@@ -112,11 +111,23 @@ timeComplexityBtn.addEventListener("click", async () => {
 
   const data = await response.json();
 
-  result.innerHTML = `
-   <div class="bg-[#1E293B] p-6 rounded-xl max-w-[80vw]">
-       <p id="typingText" class="text-[#94A3B8] leading-relaxed whitespace-pre-line">${data.data.complexity}</p>
-    </div>
-  `;
+  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
+
+  const textElement = document.getElementById("typingText");
+  const fullText = data.data.complexity;
+
+  // typing effect (character by character)
+  let index = 0;
+
+  function typeEffect() {
+    if (index < fullText.length) {
+      textElement.innerHTML += fullText.charAt(index);
+      index++;
+      setTimeout(typeEffect, 20); // speed (lower = faster)
+    }
+  }
+
+  typeEffect();
 });
 
 spaceComplexityBtn.addEventListener("click", async () => {
@@ -137,23 +148,38 @@ spaceComplexityBtn.addEventListener("click", async () => {
 
   const data = await response.json();
 
-  result.innerHTML = `
-<div class="bg-[#1E293B] p-6 rounded-xl max-w-[80vw]">
-       <p id="typingText" class="text-[#94A3B8] leading-relaxed whitespace-pre-line">${data.data.complexity}</p>
-    </div>
-  `;
+  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
+
+  const textElement = document.getElementById("typingText");
+  const fullText = data.data.complexity;
+
+  // typing effect (character by character)
+  let index = 0;
+
+  function typeEffect() {
+    if (index < fullText.length) {
+      textElement.innerHTML += fullText.charAt(index);
+      index++;
+      setTimeout(typeEffect, 20); // speed (lower = faster)
+    }
+  }
+
+  typeEffect();
 });
 
 async function generateFlowchart() {
   const input = window.editor.getValue().trim().toString();
 
-  const res = await fetch("https://decodify-1.onrender.com/api/v1/input/flowchart", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const res = await fetch(
+    "https://decodify-1.onrender.com/api/v1/input/flowchart",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input: input }),
     },
-    body: JSON.stringify({ input: input }),
-  });
+  );
 
   const data = await res.json();
   renderChart(data.data.chart);
@@ -202,15 +228,18 @@ dryRunBtn.addEventListener("click", async () => {
   console.log("Dry Run button clicked");
   const inputVal = window.editor.getValue().trim();
 
-  const response = await fetch("https://decodify-1.onrender.com/api/v1/create/dryRun", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await fetch(
+    "https://decodify-1.onrender.com/api/v1/create/dryRun",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: inputVal,
+      }),
     },
-    body: JSON.stringify({
-      input: inputVal,
-    }),
-  });
+  );
 
   const data = await response.json();
 

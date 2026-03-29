@@ -19,37 +19,24 @@ const generateTimeComplexity = asyncHandler(async (req, res) => {
     messages: [
       {
         role: "user",
-        content: `You are an expert Data Structures and Algorithms tutor.
+        content: `You are a DSA tutor.
 
-Your task is to analyze the given code or algorithm and explain its time complexity in a clear and structured way.
+Analyze the given code and return a very short answer.
 
-Follow this exact format:
-
-1. Time Complexity:
-- State the overall time complexity using Big-O notation.
-
-2. Explanation:
-- Explain how the time is being used step-by-step.
-- Include variables, data structures (arrays, maps, recursion stack, etc.).
-- Differentiate between input time and auxiliary time.
-
-3. Auxiliary Time:
-- Clearly mention the extra time used (excluding input).
-
-4. Key Insight:
-- Give a short 1-2 line intuition to quickly understand the time usage.
-
-5. Optimization (if possible):
-- Suggest how time usage can be reduced.
+Output format:
+- First line: Time Complexity in Big-O notation
+- Next 1 to 2 lines: Short explanation of how time grows
 
 Rules:
-- Keep explanations simple and beginner-friendly.
-- Avoid unnecessary jargon.
-- Be precise and accurate.
-- Clearly relate time usage to input size n.
-- Mention recursion stack time if recursion is used.
+- Keep total output under 3 lines
+- No headings
+- No bullet points
+- No comments
+- No extra text
+- Clearly relate time to input size n
+- Mention loops or recursion briefly
 
-Input:
+Code:
 ${input}`,
       },
     ],
