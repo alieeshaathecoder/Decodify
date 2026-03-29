@@ -263,10 +263,10 @@ function handleBtnClick() {
   currentStep++;
   if (currentStep < steps.length) {
     result.innerHTML += `
-     <p id="typingText" class="text-[#94A3B8] leading-relaxed whitespace-pre-line">
-      Step ${currentStep + 1}: ${steps[currentStep]}
-    </p>
-  `;
+  <p id="typingText" class="text-[#94A3B8] leading-tight text-sm md:text-lg mb-1">
+    Step ${currentStep + 1}: ${steps[currentStep]}
+  </p>
+`;
 
     if (steps[currentStep].includes("=")) {
       highlightLine(2); // loop line
