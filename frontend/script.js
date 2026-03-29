@@ -74,7 +74,7 @@ searchBtn.addEventListener("click", async () => {
 
   const data = await response.json();
 
-  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
+  result.innerHTML = "<div class='p-4 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
 
   const textElement = document.getElementById("typingText");
   const fullText = data.data.explanation;
@@ -111,7 +111,7 @@ timeComplexityBtn.addEventListener("click", async () => {
 
   const data = await response.json();
 
-  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
+  result.innerHTML = "<div class='p-4 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
 
   const textElement = document.getElementById("typingText");
   const fullText = data.data.complexity;
@@ -148,7 +148,7 @@ spaceComplexityBtn.addEventListener("click", async () => {
 
   const data = await response.json();
 
-  result.innerHTML = "<div class='p-6 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
+  result.innerHTML = "<div class='p-4 rounded-xl max-w-[80vw]'><p id='typingText' class='text-[#94A3B8] leading-relaxed whitespace-pre-line'></p></div>";
 
   const textElement = document.getElementById("typingText");
   const fullText = data.data.complexity;

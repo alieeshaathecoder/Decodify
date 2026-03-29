@@ -9,73 +9,98 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section
-      class="flex flex-col items-center gap-3 min-h-screen"
-    >
-      <h1 class="text-6xl font-bold text-slate-100 text-center mt-5">
-        Decodify
-      </h1>
-      <p class="text-[#94A3B8] mb-5 text-center">Turning Code into Clarity!</p>
+    <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decodify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-black">
+    <section class="flex flex-col items-center gap-3 min-h-screen px-3">
 
-      <!-- Search -->
-      <div class="flex flex-row h-full w-full justify-center gap-3">
-        <div  id="editor" class="p-8 rounded-3xl w-[80vw] h-[35vh] bg-[#1E293B] text-[#94A3B8] border border-[#475569]" >
-        </div>
+  <h1 class="text-4xl md:text-6xl font-bold text-slate-100 text-center mt-5">
+    Decodify
+  </h1>
 
-        <button id="search" class="text-[#64748B] hover:text-white">
-          Search
-        </button>
-      </div>
+  <p class="text-[#94A3B8] mb-5 text-center text-sm md:text-base">
+    Turning Code into Clarity!
+  </p>
 
-      <!-- Feature Buttons -->
-      <div class="flex flex-row gap-3 w-1/2 justify-center">
-        <button id="flowchart"
-          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
-        >
-          Flowchart
-        </button>
-        <button id="timeComplexityBtn"
-          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
-        >
-          Time Complexity
-        </button>
-        <button id="spaceComplexityBtn"
-          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
-        >
-          Space Complexity
-        </button>
-        <button id="dryRun"
-          class="rounded-3xl w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white"
-        >
-          Dry Run
-        </button>
-      </div>
-
-     <div class="w-[80vw] mt-6">
-
-  <!-- Output Label -->
-  <h2 class="text-[#64748B] text-sm mb-2">Output</h2>
-
-  <!-- Output + Button -->
-  <div id="resultContainer" class="flex items-start gap-4">
-
-    <!-- Output Box -->
-    <div id="result"
-      class="flex-1 p-4 rounded-xl text-[#94A3B8]
-      max-h-[200px] overflow-y-auto">
+  <!-- Search -->
+  <div class="flex flex-col md:flex-row h-full w-full justify-center gap-3">
+    
+    <div id="editor"
+      class="p-4 md:p-8 rounded-3xl w-full md:w-[80vw] h-[30vh] md:h-[35vh]
+      bg-[#1E293B] text-[#94A3B8] border border-[#475569]">
     </div>
 
-    <!-- Button -->
-    <button id="nextStep"
-      class="px-4 py-2 rounded-full 
-      bg-[#1E293B] text-[#94A3B8] 
-      hover:bg-[#15294c] hover:text-white">
-      Next Step
+    <button id="search"
+      class="text-[#64748B] hover:text-white self-center md:self-auto">
+      Search
     </button>
 
   </div>
 
-</div>
+  <!-- Feature Buttons -->
+  <div class="flex flex-col md:flex-row gap-3 w-full md:w-1/2 justify-center">
+    
+    <button id="flowchart"
+      class="rounded-3xl w-full md:w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white">
+      Flowchart
+    </button>
+
+    <button id="timeComplexityBtn"
+      class="rounded-3xl w-full md:w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white">
+      Time Complexity
+    </button>
+
+    <button id="spaceComplexityBtn"
+      class="rounded-3xl w-full md:w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white">
+      Space Complexity
+    </button>
+
+    <button id="dryRun"
+      class="rounded-3xl w-full md:w-1/2 h-8 bg-[#1E293B] text-[#94A3B8] hover:bg-[#15294c] hover:text-white">
+      Dry Run
+    </button>
+
+  </div>
+
+  <!-- Output -->
+  <div class="w-full md:w-[80vw] mt-6">
+
+    <!-- Output Label -->
+    <h2 class="text-[#64748B] text-xs md:text-sm mb-2">
+      Output
+    </h2>
+
+    <!-- Output + Button -->
+    <div id="resultContainer" class="flex flex-col md:flex-row items-start gap-4">
+
+      <!-- Output Box -->
+      <div id="result"
+        class="flex-1 p-2 md:p-4 rounded-xl text-[#94A3B8]
+        text-sm md:text-base leading-relaxed
+        max-h-[200px] md:max-h-[250px] overflow-y-auto">
+      </div>
+
+      <!-- Button -->
+      <button id="nextStep"
+        class="px-4 py-2 rounded-full hidden
+        bg-[#1E293B] text-[#94A3B8] 
+        hover:bg-[#15294c] hover:text-white self-end md:self-auto">
+        Next Step
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
      <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
     <script src="script.js"></script>
