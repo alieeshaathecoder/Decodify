@@ -224,14 +224,14 @@ function highlightLine(lineNumber) {
 }
 
 dryRunBtn.addEventListener("click", async () => {
-  nextStepBtn.classList.remove("hidden");
-
+  
   if (!window.editor) {
     alert("Editor not ready yet");
     return;
   }
-
+  
   const inputVal = window.editor.getValue().trim();
+  nextStepBtn.classList.remove("hidden");
 
   const response = await fetch(
     "https://decodify-1.onrender.com/api/v1/create/dryRun",
