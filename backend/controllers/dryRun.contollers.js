@@ -28,7 +28,6 @@ const createDryRun = asyncHandler(async (req, res) => {
       .trim()
       .split("\n");
 
-    // Find function call
     const callStart = input.lastIndexOf(funcName + "(");
     if (callStart === -1) {
       throw new apiError(400, "Function call not found");
@@ -78,12 +77,10 @@ const createDryRun = asyncHandler(async (req, res) => {
       throw new apiError(400, "Invalid for loop format");
     }
 
-    // init
     const [left, right] = parts[0].split("=");
     const variable = left.replace(/let|var|const/, "").trim();
     const start = Number(right.trim());
 
-    // condition
     const condition = parts[1];
     let operator;
 
@@ -98,7 +95,6 @@ const createDryRun = asyncHandler(async (req, res) => {
 
     const end = Number(condition.split(operator)[1].trim());
 
-    // increment
     const change = parts[2];
     let step = 1;
 
@@ -114,7 +110,6 @@ const createDryRun = asyncHandler(async (req, res) => {
       throw new apiError(400, "Invalid loop step");
     }
 
-    // loop body
     const bodyStart = input.indexOf("{");
     const bodyEnd = input.lastIndexOf("}");
     const loopLines = input
@@ -122,12 +117,10 @@ const createDryRun = asyncHandler(async (req, res) => {
       .trim()
       .split("\n");
 
-    // safer eval alternative
     const safeEval = (expr) => {
       return Function(`"use strict"; return (${expr})`)();
     };
 
-    // loop execution
     for (
       let i = start;
       operator === "<"
@@ -148,7 +141,6 @@ const createDryRun = asyncHandler(async (req, res) => {
       loopLines.forEach((line) => {
         line = line.trim();
 
-        // IF
         if (line.startsWith("if")) {
           insideIf = true;
 
@@ -167,18 +159,15 @@ const createDryRun = asyncHandler(async (req, res) => {
           }
         }
 
-        // ELSE
         else if (line.startsWith("else")) {
           insideElse = true;
         }
 
-        // closing brace
         else if (line.includes("}")) {
           insideIf = false;
           insideElse = false;
         }
 
-        // console.log
         else if (line.includes("console.log")) {
           const content = line.slice(
             line.indexOf("(") + 1,

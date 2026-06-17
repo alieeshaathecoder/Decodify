@@ -80,14 +80,13 @@ searchBtn.addEventListener("click", async () => {
   const textElement = document.getElementById("typingText");
   const fullText = data.data.explanation;
 
-  // typing effect (character by character)
   let index = 0;
 
   function typeEffect() {
     if (index < fullText.length) {
       textElement.innerHTML += fullText.charAt(index);
       index++;
-      setTimeout(typeEffect, 20); // speed (lower = faster)
+      setTimeout(typeEffect, 20); 
     }
   }
 
@@ -118,14 +117,13 @@ timeComplexityBtn.addEventListener("click", async () => {
   const textElement = document.getElementById("typingText");
   const fullText = data.data.complexity;
 
-  // typing effect (character by character)
   let index = 0;
 
   function typeEffect() {
     if (index < fullText.length) {
       textElement.innerHTML += fullText.charAt(index);
       index++;
-      setTimeout(typeEffect, 20); // speed (lower = faster)
+      setTimeout(typeEffect, 20);
     }
   }
 
@@ -156,14 +154,13 @@ spaceComplexityBtn.addEventListener("click", async () => {
   const textElement = document.getElementById("typingText");
   const fullText = data.data.complexity;
 
-  // typing effect (character by character)
   let index = 0;
 
   function typeEffect() {
     if (index < fullText.length) {
       textElement.innerHTML += fullText.charAt(index);
       index++;
-      setTimeout(typeEffect, 20); // speed (lower = faster)
+      setTimeout(typeEffect, 20); 
     }
   }
 
@@ -191,7 +188,7 @@ async function generateFlowchart() {
 function renderChart(code) {
   const result = document.getElementById("result");
 
-  result.innerHTML = ""; // clear first
+  result.innerHTML = ""; 
 
   try {
     result.innerHTML = `<div class="mermaid overflow-y-auto">${code}</div>`;
@@ -249,10 +246,8 @@ dryRunBtn.addEventListener("click", async () => {
   steps = data.data;
   currentStep = 0;
 
-  // ✅ clear old output properly
   result.innerHTML = "";
 
-  // ✅ add first step cleanly
   addStep();
 
   highlightLine(2);
@@ -270,7 +265,6 @@ function addStep() {
 
   result.appendChild(stepEl);
 
-  // ✅ auto scroll (important)
   result.scrollTop = result.scrollHeight;
 
   currentStep++;
