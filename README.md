@@ -1,6 +1,7 @@
 # Decodify 🚀
 
 > AI-Powered Code Editor with Intelligent Code Explanations, Dry Run Visualization, and Flowchart Generation
+---
 
 ## 📖 Overview
 
