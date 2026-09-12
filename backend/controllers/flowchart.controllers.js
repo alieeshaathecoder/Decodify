@@ -5,7 +5,7 @@ import apiResponse from "../utils/apiResponse.js";
 import Groq from "groq-sdk";
 
 const groq = new Groq({
-  apiKey: process.env.Decodify_api_key,
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 const generateFlowchart = asyncHandler(async (req, res) => {
@@ -42,7 +42,7 @@ Input:
 ${input}`,
       },
     ],
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
   });
 
   let chart = completion.choices[0]?.message?.content || "";

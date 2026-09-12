@@ -50,7 +50,7 @@ Code:
 `,
       },
     ],
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
   });
 
   const explanation = completion.choices[0].message.content;
