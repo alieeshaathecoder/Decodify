@@ -5,7 +5,7 @@ import apiResponse from "../utils/apiResponse.js";
 import Groq from "groq-sdk";
 
 const groq = new Groq({
-  apiKey: "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",
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 const generateTimeComplexity = asyncHandler(async (req, res) => {

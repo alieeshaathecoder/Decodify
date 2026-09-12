@@ -5,7 +5,7 @@ import apiResponse from "../utils/apiResponse.js";
 import Groq from "groq-sdk";
 
 const groq = new Groq({
-  apiKey: "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",
+  apiKey: process.env.Decodify_api_key,
 });
 
 const generateFlowchart = asyncHandler(async (req, res) => {

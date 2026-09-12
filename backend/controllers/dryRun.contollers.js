@@ -33,10 +33,9 @@ const createDryRun = asyncHandler(async (req, res) => {
       throw new apiError(400, "Function call not found");
     }
 
-    const arg = input.slice(
-      callStart + funcName.length + 1,
-      input.indexOf(")", callStart)
-    ).trim();
+    const arg = input
+      .slice(callStart + funcName.length + 1, input.indexOf(")", callStart))
+      .trim();
 
     steps.push(`Call function ${funcName} with ${param} = ${arg}`);
 
@@ -44,10 +43,9 @@ const createDryRun = asyncHandler(async (req, res) => {
       line = line.trim();
 
       if (line.includes("console.log")) {
-        const content = line.slice(
-          line.indexOf("(") + 1,
-          line.lastIndexOf(")")
-        ).trim();
+        const content = line
+          .slice(line.indexOf("(") + 1, line.lastIndexOf(")"))
+          .trim();
 
         const output = content.replaceAll(param, arg);
         steps.push(`Print ${output}`);
@@ -67,10 +65,7 @@ const createDryRun = asyncHandler(async (req, res) => {
       throw new apiError(400, "Invalid for loop syntax");
     }
 
-    const loopContent = input.slice(
-      smallBracesStart + 1,
-      smallBracesEnd
-    );
+    const loopContent = input.slice(smallBracesStart + 1, smallBracesEnd);
 
     const parts = loopContent.split(";").map((p) => p.trim());
     if (parts.length !== 3) {
@@ -126,10 +121,10 @@ const createDryRun = asyncHandler(async (req, res) => {
       operator === "<"
         ? i < end
         : operator === "<="
-        ? i <= end
-        : operator === ">"
-        ? i > end
-        : i >= end;
+          ? i <= end
+          : operator === ">"
+            ? i > end
+            : i >= end;
       i += step
     ) {
       steps.push(`${variable} = ${i}`);
@@ -146,7 +141,7 @@ const createDryRun = asyncHandler(async (req, res) => {
 
           const condition = line.slice(
             line.indexOf("(") + 1,
-            line.lastIndexOf(")")
+            line.lastIndexOf(")"),
           );
 
           const evalCondition = condition.replaceAll(variable, i);
@@ -157,22 +152,15 @@ const createDryRun = asyncHandler(async (req, res) => {
           } catch {
             steps.push("Condition error");
           }
-        }
-
-        else if (line.startsWith("else")) {
+        } else if (line.startsWith("else")) {
           insideElse = true;
-        }
-
-        else if (line.includes("}")) {
+        } else if (line.includes("}")) {
           insideIf = false;
           insideElse = false;
-        }
-
-        else if (line.includes("console.log")) {
-          const content = line.slice(
-            line.indexOf("(") + 1,
-            line.lastIndexOf(")")
-          ).trim();
+        } else if (line.includes("console.log")) {
+          const content = line
+            .slice(line.indexOf("(") + 1, line.lastIndexOf(")"))
+            .trim();
 
           const replaced = content.replaceAll(variable, i);
 
@@ -197,9 +185,7 @@ const createDryRun = asyncHandler(async (req, res) => {
     throw new apiError(400, "Only 'for' loop or function supported");
   }
 
-  return res
-    .status(200)
-    .json(new apiResponse(200, steps, "Dry run created"));
+  return res.status(200).json(new apiResponse(200, steps, "Dry run created"));
 });
 
 export { createDryRun };
