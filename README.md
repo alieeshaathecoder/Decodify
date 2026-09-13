@@ -147,19 +147,6 @@ Decodify/
 
 ---
 
-## 🎯 Use Cases
-
-* Programming Education
-* Algorithm Visualization
-* Code Comprehension
-* Debugging Assistance
-* Interview Preparation
-* Learning Data Structures and Algorithms
-* Self-Learning Platforms
-* Coding Practice
-
----
-
 ## ⚙️ Installation
 
 ### Clone the Repository
@@ -203,12 +190,6 @@ npm start
 ### Run the Frontend
 
 Open `frontend/index.html` in your browser or use a local development server.
-
----
-
-## 🏆 Achievement
-
-Decodify was developed as part of the Uttarakhand Youth Hackathon journey and reflects a vision of making programming more understandable through AI-assisted learning and visualization.
 
 ---
 
