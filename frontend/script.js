@@ -1,6 +1,7 @@
 mermaid.initialize({ startOnLoad: false });
 
 const result = document.querySelector("#result");
+const resultContainer = document.querySelector("#resultContainer");
 const flowchartBtn = document.querySelector("#flowchart");
 const timeComplexityBtn = document.querySelector("#timeComplexityBtn");
 const spaceComplexityBtn = document.querySelector("#spaceComplexityBtn");
@@ -95,6 +96,10 @@ searchBtn.addEventListener("click", async () => {
 
 timeComplexityBtn.addEventListener("click", async () => {
   nextStepBtn.classList.add("hidden");
+  if (!window.editor) {
+    alert("Editor not ready yet");
+    return;
+  }
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
@@ -132,6 +137,10 @@ timeComplexityBtn.addEventListener("click", async () => {
 
 spaceComplexityBtn.addEventListener("click", async () => {
   nextStepBtn.classList.add("hidden");
+   if (!window.editor) {
+    alert("Editor not ready yet");
+    return;
+  }
   const inputVal = window.editor.getValue().trim();
 
   const response = await fetch(
@@ -168,6 +177,10 @@ spaceComplexityBtn.addEventListener("click", async () => {
 });
 
 async function generateFlowchart() {
+  if (!window.editor) {
+    alert("Editor not ready yet");
+    return;
+  }
   const input = window.editor.getValue().trim().toString();
 
   const res = await fetch(
